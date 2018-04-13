@@ -18,6 +18,8 @@ package org.kie.api.runtime.manager.audit;
 
 import java.util.List;
 
+import org.kie.api.search.SearchCriteria;
+
 /**
  * AuditService provides access to active and already completed process (and its components) data.
  * Delivers data about:
@@ -123,4 +125,12 @@ public interface AuditService {
      * Indicates that work with this instance of <code>AuditService</code> is completed and can be disposed (release resources)
      */
     public void dispose();
+
+    /**
+     * Query process instances
+     * @param searchCriteria
+     * @return a list of {@link org.kie.api.runtime.manager.audit.ProcessInstanceLog}
+     * @author PTI
+     */
+    public List<? extends ProcessInstanceLog> getProcessInstances(SearchCriteria searchCriteria);
 }

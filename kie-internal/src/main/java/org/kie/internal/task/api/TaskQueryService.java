@@ -20,6 +20,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.pti.fsc.common.wf.WfTaskSummary;
+import org.kie.api.search.SearchCriteria;
 import org.kie.api.task.model.OrganizationalEntity;
 import org.kie.api.task.model.Status;
 import org.kie.api.task.model.Task;
@@ -125,4 +127,39 @@ public interface TaskQueryService {
      * @return
      */
     List<TaskSummary> query( String userId, QueryData queryData );
+
+    /**
+     * Generic custom task query
+     * @param searchCriteria
+     * @return a list of TaskSummary
+     * @author PTI
+     */
+	List<TaskSummary> getTasks(SearchCriteria searchCriteria);
+	/**
+	 * Generic custom task query By InstanceId
+	 * @param processInstanceId
+	 * @return
+     * @author PTI
+	 */
+	List<TaskSummary> getTasksByInstanceId(long processInstanceId);
+
+	/**
+	 * Update additional process variables table
+	 * 
+	 * @param taskId
+	 *            - Long, task id
+	 * @param data
+	 *            - Map
+     * @author PTI
+	 */
+	void updateProcessExtra(Long taskId, Map<String, Object> data);
+	
+	void updateProcessExtraByInstanceId(Long processInstanceId, Map<String, Object> data);
+	
+	List<TaskSummary> getSystemTasks(SearchCriteria searchCriteria);
+	/**
+	 * get task summary
+     * @author PTI
+	 */
+    List<WfTaskSummary> getTaskSummary(SearchCriteria searchCriteria);
 }

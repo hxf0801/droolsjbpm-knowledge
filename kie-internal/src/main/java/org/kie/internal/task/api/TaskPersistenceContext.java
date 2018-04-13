@@ -1,6 +1,7 @@
 package org.kie.internal.task.api;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.kie.api.task.model.Attachment;
@@ -122,4 +123,34 @@ public interface TaskPersistenceContext {
     void joinTransaction();
 
     void close();
+
+    	/**
+	 * Native query with parameters
+	 * @param queryName - String, native SQL query string
+	 * @param params - Map, query parameters
+	 * @return List
+	 * @author PTI
+	 */
+    List<Object[]> nativequeryWithParametersInTransaction(String queryName, Map<String, Object> params);
+    /**
+     * Native query the number of total rows
+     * @param queryName - String, native SQL query string
+     * @param params - Map, query parameters 
+     * @return int, the total rows number
+     * @author PTI
+     */
+    int nativequeryTotalRows(String queryName, Map<String, Object> params);
+    
+    /**
+	 * Update additional process variables table
+	 * 
+	 * @param taskId
+	 *        - Long, task id
+	 * @param data
+	 *        - Map
+	 * @author PTI
+	 */
+	void updateProcessExtra(Long taskId, Map<String, Object> data);
+	
+	void updateProcessExtraByInstanceId(Long processInstanceId, Map<String, Object> data);
 }

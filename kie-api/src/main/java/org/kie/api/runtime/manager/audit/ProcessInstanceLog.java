@@ -17,6 +17,7 @@
 package org.kie.api.runtime.manager.audit;
 
 import java.util.Date;
+import java.util.Map;
 
 /**
  * Audit view of process instance
@@ -104,4 +105,17 @@ public interface ProcessInstanceLog {
 	 */
 	String getProcessName();
 
+    /**
+     * Process instance description
+     * @return
+     * @author PTI
+     */
+    String getProcessInstanceDescription();
+
+    /**
+     * Use map to return our self-defined table properties
+     * @return Map
+     * @author PTI
+     */
+    Map<String, Object> getMoreProperties();
 }

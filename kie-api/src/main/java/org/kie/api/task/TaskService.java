@@ -18,7 +18,9 @@ package org.kie.api.task;
 import java.util.List;
 import java.util.Map;
 
+import com.pti.fsc.common.wf.WfTaskSummary;
 import org.kie.api.runtime.CommandExecutor;
+import org.kie.api.search.SearchCriteria;
 import org.kie.api.task.model.Attachment;
 import org.kie.api.task.model.Content;
 import org.kie.api.task.model.OrganizationalEntity;
@@ -122,4 +124,34 @@ public interface TaskService extends CommandExecutor {
      */
     @Deprecated
     List<TaskSummary> getTasksByVariousFields( String userId, Map <String, List<?>> parameters, boolean union);
+
+    /**
+     * Generic custom task query 
+     * @param searchCriteria
+     * @return A list of TaskSummary
+     * @author PTI
+     */
+    List<TaskSummary> getTasks(SearchCriteria searchCriteria);
+
+    /**
+     * get tasks by instance id
+     * @param processInstanceId
+     * @author PTI
+     */
+    List<TaskSummary> getTasksByInstanceId(long processInstanceId);
+
+    /**
+     * get task summary for SAL monitor
+     * @author PTI
+     */
+    List<WfTaskSummary> getTaskSummary(SearchCriteria searchCriteria);
+
+    /**
+     * @author PTI
+     */
+    void updateProcessExtra(long taskId, Map<String, Object> data);
+
+    void updateProcessExtraByInstanceId(long processInstanceId, Map<String, Object> data);
+
+    List<TaskSummary> getSystemTasks(SearchCriteria searchCriteria);
 }

@@ -18,6 +18,7 @@ package org.kie.api.task.model;
 
 import java.io.Externalizable;
 import java.util.List;
+import java.util.Map;
 
 public interface Task extends Externalizable {
    
@@ -43,4 +44,34 @@ public interface Task extends Externalizable {
 
     String getTaskType();
 
+    /**
+     * Use map to return our self-defined table properties
+     * @return Map
+     * @author PTI
+     */
+    Map<String, Object> getMoreProperties();
+
+    /**
+     * form name is the unique real task name. it is not the display name
+     * 
+     * @return String
+     * @author PTI
+     */
+    String getFormName();
+
+    /**
+     * batch process type
+     * 
+     * @return String
+     * @author PTI
+     */
+    String getBatchProcessType();
+
+    /**
+     * Actor's company type
+     * 
+     * @return String
+     * @author PTI
+     */
+    String getActorCompanyType();
 }
