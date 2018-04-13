@@ -17,6 +17,7 @@
 package org.kie.internal.task.api.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.kie.api.task.model.I18NText;
 import org.kie.api.task.model.PeopleAssignments;
@@ -67,5 +68,29 @@ public interface InternalTask extends Task {
     void setName(String name);
     void setSubject(String subject);
     void setDescription(String description);
+
+    /**
+     * Use map to return our self-defined table properties
+     * 
+     * @param moreProperties
+     * @author PTI
+     */
+    void setMoreProperties(Map<String, Object> moreProperties);
+
+    /**
+     * batch process type
+     * 
+     * @param batchProcessType
+     * @author PTI
+     */
+    void setBatchProcessType(String batchProcessType);
+
+    /**
+     * Actor's company type
+     * 
+     * @param actorCompanyType
+     * @author PTI
+     */
+    void setActorCompanyType(String actorCompanyType);
 
 }
